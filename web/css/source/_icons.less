@@ -1,0 +1,256 @@
+@icon-font: 'magento-two-icons';
+
+@font-face {
+    font-family: @icon-font;
+    src:  url('../fonts/magento-two-icons.eot?4resgi');
+    src:  url('../fonts/magento-two-icons.eot?4resgi#iefix') format('embedded-opentype'),
+    url('../fonts/magento-two-icons.woff2?4resgi') format('woff2'),
+    url('../fonts/magento-two-icons.ttf?4resgi') format('truetype'),
+    url('../fonts/magento-two-icons.woff?4resgi') format('woff'),
+    url('../fonts/magento-two-icons.svg?4resgi#magento-two-icons') format('svg');
+    font-weight: normal;
+}
+
+.icn(@_icon_letter, @_icon_size: false, @_icon_color: false) {
+    &:before {
+        font-family: @icon-font !important;
+        content: @_icon_letter;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        .lib-css(font-size, @_icon_size);
+        .lib-css(color, @_icon_color);
+    }
+}
+.icoaft(@_icon_letter, @_icon_size: false, @_icon_color: false) {
+    &:after {
+        font-family: @icon-font !important;
+        content: @_icon_letter;
+        font-style: normal !important;
+        font-weight: normal !important;
+        font-variant: normal !important;
+        text-transform: none !important;
+        speak: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        .lib-css(font-size, @_icon_size);
+        .lib-css(color, @_icon_color);
+    }
+}
+
+
+[data-icon]:before {
+  font-family: @icon-font !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: @icon-font !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+}
+
+.iconlist {
+    [class^="icon-"],
+    [class*=" icon-"] {
+        font-size: 0;
+        display: inline-block;
+        &:before {
+            font-size: 30px;
+        }
+    }
+}
+
+.icon-indent(@_icon_margin, @_v_align) {
+    &:before {
+        vertical-align: @_v_align;
+        margin-right: @_icon_margin;
+    }    
+}
+
+// Classes
+
+.icon-grid-sml:before {
+  content: "\e91e";
+}
+.icon-credit-cards:before {
+  content: "\e934";
+}
+.icon-mobile-filter-icon:before {
+  content: "\e933";
+}
+.icon-list-view:before {
+  content: "\e930";
+}
+.icon-pdf-download:before {
+  content: "\e931";
+}
+.icon-quantity-plus:before {
+  content: "\e932";
+}
+.icon-quantity-minus:before {
+  content: "\e92f";
+}
+.icon-account-newsletter:before {
+  content: "\e900";
+}
+.icon-account-wishlist:before {
+  content: "\e901";
+}
+.icon-address-book:before {
+  content: "\e903";
+}
+.icon-my-orders:before {
+  content: "\e904";
+}
+.icon-account-dashboard:before {
+  content: "\e905";
+}
+.icon-basket-delete:before {
+  content: "\e906";
+}
+.icon-secure-padlock:before {
+  content: "\e907";
+}
+.icon-breadcrumb:before {
+  content: "\e908";
+}
+.icon-facebook:before {
+  content: "\e909";
+}
+.icon-twitter:before {
+  content: "\e90a";
+}
+.icon-instagram:before {
+  content: "\e90b";
+}
+.icon-account:before {
+  content: "\e90c";
+}
+.icon-carousel-left:before {
+  content: "\e90d";
+}
+.icon-carousel-right:before {
+  content: "\e90e";
+}
+.icon-cart:before {
+  content: "\e90f";
+}
+.icon-delivery:before {
+  content: "\e910";
+}
+.icon-dropdown-menu-down:before {
+  content: "\e911";
+}
+.icon-dropdown-menu-up:before {
+  content: "\e912";
+}
+.icon-faq:before {
+  content: "\e913";
+}
+.icon-filter-delete:before {
+  content: "\e914";
+}
+.icon-filter-minus:before {
+  content: "\e915";
+}
+.icon-filter-tick:before {
+  content: "\e916";
+}
+.icon-filter-view-more:before {
+  content: "\e917";
+}
+.icon-footer-back-to-top:before {
+  content: "\e918";
+}
+.icon-google-plus:before {
+  content: "\e919";
+}
+.icon-grid:before {
+  content: "\e91a";
+}
+.icon-hero-carousel-left:before {
+  content: "\e91b";
+}
+.icon-hero-carousel-right:before {
+  content: "\e91c";
+}
+.icon-dropdown-sort-by:before {
+  content: "\e91d";
+}
+.icon-list-view-Old:before {
+  content: "\e91e";
+}
+.icon-locator:before {
+  content: "\e91f";
+}
+.icon-mobile-menu-left:before {
+  content: "\e920";
+}
+.icon-mobile-menu-right:before {
+  content: "\e92a";
+}
+.icon-mobile-menu-down:before {
+  content: "\e921";
+}
+.icon-mobile-menu:before {
+  content: "\e922";
+}
+.icon-menu-close-mobile:before {
+  content: "\e923";
+}
+.icon-search:before {
+  content: "\e924";
+}
+.icon-store-locator-star:before {
+  content: "\e925";
+}
+.icon-store-locator:before {
+  content: "\e926";
+}
+.icon-telephone-outline:before {
+  content: "\e927";
+}
+.icon-pagination-left:before {
+  content: "\e928";
+}
+.icon-pagination-right:before {
+  content: "\e929";
+}
+.icon-in-stock:before {
+  content: "\e902";
+}
+.icon-tick-black-bullet:before {
+  content: "\e92b";
+}
+.icon-trolley:before {
+  content: "\e92c";
+}
+.icon-exclamation-mark:before {
+  content: "\e92d";
+}
+.icon-telephone-black:before {
+  content: "\e92e";
+}

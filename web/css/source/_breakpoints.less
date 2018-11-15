@@ -1,0 +1,28 @@
+//
+// Breakpoints
+// ______________________________________________
+
+@screen__xxs: 0px;
+@screen__xs: 374px;
+@screen__s: 768px;
+@screen__t: 960px;
+@screen__m: 1025px;
+@screen__l: 1280px;
+@screen__xl: 1400px;
+
+@cbp__toolbar: 648px;
+
+
+//
+//  Device Ranges
+//  ---------------------------------------------
+
+//The below ranges can be applied with simply @media @tablet{} but will not get sorted into
+// styles_m and styles_l so use with  caution! You may also need to use !important for this reason
+
+@mobile: ~"only screen and (max-width:@{screen__s})";
+@mobile_landscape: ~"only screen and (max-width: '@{screen__s}') and (orientation: landscape)";
+@tablet: ~"only screen and (min-width: @{screen__s}) and (max-width: @{screen__m})";
+@desktop: ~"only screen and (min-width: (1025px)";
+@bothTabletDesktop: ~"only screen and (min-width: @{screen__s})";
+

@@ -1,0 +1,58 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .page.messages{
+        margin-bottom: 10px;
+    }
+
+    .message{
+        margin-top: 20px;
+        padding:12px;
+        border-radius: 5px;
+
+        &:before{
+            margin-right: 10px;
+            line-height: 25px;
+            vertical-align: middle;
+        }
+
+        span, div{
+            color: @color-white;
+            font-family: @font-family__title;
+            font-size: 15px;
+            line-height: 25px;
+            display: inline-block;
+        }
+    }
+    .message.info {
+        background: @color-orange-warning;
+        .icn(@icon-exclamation-mark, 25px, @color-white);
+    }
+
+    .message.error {
+        background: @color-red-error;
+        .icn(@icon-filter-delete, 25px, @color-white);
+    }
+
+    .message.warning {
+         background: @color-orange-warning;
+        .icn(@icon-exclamation-mark, 25px, @color-white);
+    }
+
+    .message.notice {
+         background: @color-orange-warning;
+        .icn(@icon-exclamation-mark, 25px, @color-white);
+    }
+
+    .message.success {
+         background: @color-green-success;
+        .icn(@icon-tick-black-bullet, 25px, @color-white);
+    }
+}

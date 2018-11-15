@@ -1,0 +1,88 @@
+// /**
+//  * Copyright © 2016 Magento. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+
+// Buttons
+@button__font-size: 15px;
+@button__font-weight: normal;
+@button__font-family:  @font-family__sans-serif; 
+@button__line-height: false;
+@button__padding: 12px 30px;
+@button__border-width: 0;
+@button__border-style: solid;
+@button__border-radius: 5px;
+
+// Primary Button
+@button-primary__background: @button_primary;
+@button-primary__border: @button__border-width @button__border-style @button_primary;
+@button-primary__hover__background: @button_primary_hover__color;
+@button-primary__hover__color: @color-white;
+@button-primary__hover__border: @button__border-width @button__border-style  @button_primary;
+
+// Secondary Button
+@button_secondary__background: @color-select-grey;
+@button_secondary__hover__background: @color-hover-blue;
+
+& when (@media-common = true) {
+
+    //  Using buttons mixins
+    button,
+    a.action.primary {
+        .lib-button-primary();
+        border-radius: @button__border-radius;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+    }
+
+    button {
+        &:active {
+        }
+    }
+
+    a.action.primary {
+      
+    }
+
+    .action.primary {
+       
+    }
+
+    .link-button {
+        .lib-button-primary();
+        .lib-css(background, @button_secondary);
+        .lib-css(color, @color-white);
+        .lib-css(border, 0);
+        .lib-css(font-weight, @font-thin);    
+        font-family: @font-family__title;  
+        border-radius:@button__border-radius;
+        text-decoration: none!important;
+        &:hover {
+            .lib-css(background, @button_secondary__hover__background);
+            text-decoration: none;
+        }
+    }
+
+    .secondary-button {
+        .lib-button-primary();
+        .lib-css(background, @button_secondary__background);
+        .lib-css(color,  @color-white);
+        .lib-css(border, 0);
+        .lib-css(font-weight, @font-thin);
+        border-radius:@button__border-radius;
+        text-transform: uppercase;
+        &:hover{
+            .lib-css(background, @button_secondary__hover__background);
+            .lib-css(color,  @color-white);
+            text-decoration: none;
+        }
+    }
+
+}
+
