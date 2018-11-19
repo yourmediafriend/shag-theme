@@ -1,5 +1,5 @@
 // /**
-//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * Copyright © Magento, Inc. All rights reserved.
 //  * See COPYING.txt for license details.
 //  */
 
@@ -7,25 +7,9 @@
 //  Variables
 //  _____________________________________________
 
+@legend-border-bottom: 1px solid @color-gray-light6;
 @form-field__vertical-indent__desktop: 29px;
 @form-calendar-icon__color: @primary__color;
-@color-grey-select: #e7e7e7;
-//
-//  Mixins
-//  _____________________________________________
-
-.select-grey() {
-    background-color: @color-grey-select;
-    font-size: @font-size__s;
-    border-color: @color-grey-select;
-    border-radius: 5px;
-    height: 35px;
-}
-
-
-@checkbox-height: 19px;
-@checkbox-width: 19px;
-
 
 //
 //  Common
@@ -34,6 +18,7 @@
 & when (@media-common = true) {
     .fieldset {
         .lib-form-fieldset();
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -41,17 +26,17 @@
         > .field,
         > .fields > .field {
             .lib-form-field();
-
             &.no-label {
                 > .label {
-                    &:extend(.abs-visually-hidden all);
+                    .lib-visually-hidden();
                 }
             }
 
             &.choice {
                 .label {
-                    display: inline-block;
+                    display: inline;
                     font-weight: normal;
+                    margin: 0;
                 }
             }
 
@@ -68,16 +53,18 @@
                     margin-bottom: 0;
                 }
             }
-
-            input[type=file] {
-                margin: @indent__xs 0;
-            }
         }
     }
 
     .legend + .fieldset,
     .legend + div {
         clear: both;
+    }
+
+    .legend {
+        > span {
+            margin-right: @indent__xs;
+        }
     }
 
     fieldset.field {
@@ -87,8 +74,6 @@
 
     .field {
         &.date {
-            &:extend(.abs-field-date all);
-
             .time-picker {
                 display: inline-block;
                 margin-top: @indent__s;
@@ -103,9 +88,37 @@
         }
     }
 
+    .select-styling() {
+        .lib-css(appearance, none, 1);
+        appearance: none;
+        background-size: 30px 60px;
+        text-indent: .01em;
+        text-overflow: '';
+
+        &::-ms-expand {
+            display: none;
+        }
+
+        .lt-ie10 & {
+            background-image: none;
+            padding-right: 4px;
+        }
+    }
+
+    select {
+        .select-styling();
+    }
+
+    .field-error,
     div.mage-error[generated] {
         margin-top: 7px;
     }
+
+    .field-error {
+        .lib-form-validation-note();
+    }
+
+    //  TEMP
 
     .field .tooltip {
         .lib-tooltip(right);
@@ -132,6 +145,7 @@
             @_icon-font-text-hide: true
             );
             display: inline-block;
+            margin-top: -4px;
             vertical-align: middle;
 
             &:focus {
@@ -141,68 +155,16 @@
         }
     }
 
-    // Checkbox
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    input[type="checkbox"] + .label,
-    input[type="checkbox"] + label {
-        position: relative;
-        padding-left: 30px;
-        line-height: @checkbox-height;
-        margin-bottom: 15px;
-        display: block;
-
-        &:before {
-            content: "";
-            height: @checkbox-height;
-            width: @checkbox-width;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border: 1px solid @color-border-form-element;
-            box-sizing: border-box;
+    .field.date,
+    .field-dob {
+        ._has-datepicker {
+            &:extend(.abs-field-date-input all);
         }
     }
-
-    input[type="checkbox"]:checked + .label,
-    input[type="checkbox"]:checked + label {
-        &:before {
-            content: @icon-checkbox-tick;
-            font-family: @icon-font;
-            text-align: center;
-            line-height: @checkbox-height;
-            font-size: 12px;
-        }
-    }
-
-    .account {
-        input[type="checkbox"]:checked + .label,
-        input[type="checkbox"]:checked + label {
-            &:before {
-                background: @color-green-form;
-                color: @color-white;
-            }
-        }
-    }
-
-
-
-    select {
-        -webkit-appearance:none;
-        font-size: @font-size__s;
-        &:focus{outline:0!important; box-shadow: none!important;}
-        background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSI4cHgiIHZpZXdCb3g9IjAgMCAxMyA4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0My4xICgzOTAxMikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+UGF0aCA1PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IkhvbWVwYWdlIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iNC40LUNhdGVnb3J5LUxpc3RpbmciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMjk2LjAwMDAwMCwgLTQ3Ni4wMDAwMDApIiBmaWxsPSIjNDI0MjQyIj4KICAgICAgICAgICAgPGcgaWQ9IkNhdGVnb3J5LUxpc3RpbmciIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM4Mi4wMDAwMDAsIDQ0NC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJ0b3AiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuMDAwMDAwLCAwLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxnIGlkPSJTb3J0LUJ5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NjMuMDAwMDAwLCAxOC4wMDAwMDApIj4KICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU0LjUwMDAwMCwgMTguMDAwMDAwKSByb3RhdGUoLTI3MC4wMDAwMDApIHRyYW5zbGF0ZSgtMjU0LjUwMDAwMCwgLTE4LjAwMDAwMCkgIiBwb2ludHM9IjI1MSAxMiAyNTEgMjQgMjU4IDE4Ij48L3BvbHlnb24+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=');
-        background-repeat: no-repeat;
-        background-position: right 12px top 49%;
-        padding-right: 45px;
-    }
-
 
     //
     //  Sidebar forms
-    //  -----------------------------------------
+    //  ---------------------------------------------
 
     .sidebar {
         .fieldset {
@@ -234,18 +196,7 @@
 //  _____________________________________________
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
-
-}
-
-
-//
-//  Mixins
-//  _____________________________________________
-
-
-.select-dropdown{
-    background-color: @color-select-grey;
-    border: none;
-    height: 35px;
-    font-size: 14px;
+    .legend {
+        .lib-css(border-bottom, @legend-border-bottom);
+    }
 }
